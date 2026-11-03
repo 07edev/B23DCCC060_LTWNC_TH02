@@ -1,13 +1,16 @@
 export type ExerciseCategory =
-  | 'Cardio'
-  | 'Strength'
-  | 'Flexibility'
-  | 'Balance'
+  | 'Ngực'
+  | 'Chân'
+  | 'Tay'
+  | 'Lưng'
+  | 'Vai'
 
 export type Exercise = {
-  id: number
+  id: string
   name: string
   category: ExerciseCategory
+  trainer: string
+  muscle: ExerciseCategory
   duration: number
   description: string
 }
@@ -16,5 +19,5 @@ export type Routine = {
   id: string
   name: string
   description: string
-  exerciseIds: number[]
+  exerciseIds: string[]
 }

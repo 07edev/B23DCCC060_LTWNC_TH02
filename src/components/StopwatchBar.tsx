@@ -9,6 +9,8 @@ export function StopwatchBar() {
   const resume = useStopwatchStore((state) => state.resume)
   const reset = useStopwatchStore((state) => state.reset)
   const tick = useStopwatchStore((state) => state.tick)
+  const next = useStopwatchStore((state) => state.next)
+  const end = useStopwatchStore((state) => state.end)
 
   useEffect(() => {
     if (!isRunning) {
@@ -22,7 +24,7 @@ export function StopwatchBar() {
   if (!activeExercise) {
     return (
       <aside className="stopwatch-bar empty-stopwatch">
-        <span>Select an exercise to start your timer.</span>
+        <span>Chọn bài tập để bắt đầu bấm giờ.</span>
       </aside>
     )
   }
@@ -30,24 +32,26 @@ export function StopwatchBar() {
   const progress = (elapsedSeconds / activeExercise.duration) * 100
 
   return (
-    <aside className="stopwatch-bar" aria-label="Workout stopwatch">
+    <aside className="stopwatch-bar" aria-label="Đồng hồ bấm giờ">
       <div className="stopwatch-info">
-        <span className="eyebrow">Now training</span>
+        <span className="eyebrow">Đang tập</span>
         <strong>{activeExercise.name}</strong>
         <span>
-          {elapsedSeconds}s / {activeExercise.duration}s
+          {elapsedSeconds} giây / {activeExercise.duration} giây
         </span>
       </div>
       <div className="stopwatch-progress" aria-hidden="true">
         <span style={{ width: `${progress}%` }} />
       </div>
       <div className="stopwatch-actions">
+        <button type="button" className="secondary-button" onClick={next}>Bỏ qua</button>
         <button type="button" onClick={isRunning ? pause : resume}>
-          {isRunning ? 'Pause' : 'Resume'}
+          {isRunning ? 'Tạm dừng' : 'Tiếp tục'}
         </button>
         <button type="button" className="secondary-button" onClick={reset}>
-          Reset
+          Đặt lại
         </button>
+        <button type="button" className="secondary-button" onClick={end}>Kết thúc</button>
       </div>
     </aside>
   )

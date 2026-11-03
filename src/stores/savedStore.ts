@@ -2,9 +2,9 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
 type SavedState = {
-  savedIds: number[]
-  toggleSaved: (id: number) => void
-  isSaved: (id: number) => boolean
+  savedIds: string[]
+  toggleSaved: (id: string) => void
+  isSaved: (id: string) => boolean
 }
 
 export const useSavedStore = create<SavedState>()(

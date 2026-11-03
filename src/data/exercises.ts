@@ -1,32 +1,38 @@
 import type { Exercise, ExerciseCategory } from '../types'
 
 const categories: ExerciseCategory[] = [
-  'Cardio',
-  'Strength',
-  'Flexibility',
-  'Balance',
+  'Ngực',
+  'Chân',
+  'Tay',
+  'Lưng',
+  'Vai',
 ]
 
 const exerciseNames = [
-  'Jumping Jacks',
-  'Bodyweight Squats',
-  'Mountain Climbers',
-  'Plank Hold',
-  'High Knees',
-  'Lunges',
-  'Push Ups',
-  'Shoulder Stretch',
+  'Đẩy tạ đơn',
+  'Kéo tạ đơn',
+  'Gập tạ đơn',
+  'Nâng tạ đơn',
+  'Ép tạ đơn',
+  'Xoay tạ đơn',
+  'Bật tạ đơn',
+  'Giữ tạ đơn',
+  'Đẩy dây kháng lực',
 ]
+
+const trainers = ['Minh Khang', 'Phương Anh', 'Đức Anh', 'Mai Hương', 'Gia Bảo', 'Khánh Linh']
 
 export const exercises: Exercise[] = Array.from({ length: 10_000 }, (_, index) => {
   const name = exerciseNames[index % exerciseNames.length]
   const category = categories[index % categories.length]
 
   return {
-    id: index + 1,
+    id: String(index + 1),
     name: `${name} ${index + 1}`,
     category,
-    duration: 30 + ((index * 15) % 271),
-    description: `A focused ${category.toLowerCase()} session for building a consistent training habit.`,
+    trainer: trainers[index % trainers.length],
+    muscle: category,
+    duration: 30 + ((index * 7) % 91),
+    description: `Bài tập ${category.toLowerCase()} cùng huấn luyện viên ${trainers[index % trainers.length]}.`,
   }
 })
