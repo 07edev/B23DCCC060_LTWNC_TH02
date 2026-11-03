@@ -75,6 +75,20 @@ button {
   color: white;
 }
 
+.main-nav a {
+  padding: 8px 13px;
+  border-radius: 8px;
+  color: #aab4ca;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.main-nav a.active-nav,
+.main-nav a:hover {
+  background: #293650;
+  color: white;
+}
+
 .page-content {
   width: min(1120px, calc(100% - 48px));
   margin: 0 auto;
@@ -226,6 +240,62 @@ h1 {
   color: #64708a;
 }
 
+.routine-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.routine-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  padding: 24px;
+  border: 1px solid #e1e6f0;
+  border-radius: 16px;
+  background: white;
+}
+
+.routine-card h2 {
+  margin-top: 8px;
+}
+
+.routine-card > p:not(.eyebrow),
+.routine-detail-header > p:last-child {
+  color: #64708a;
+}
+
+.routine-link,
+.back-link {
+  color: #248b75;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.routine-link {
+  margin-top: auto;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.routine-detail-header {
+  max-width: 700px;
+}
+
+.routine-exercise-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.routine-detail-header h1 {
+  margin-bottom: 12px;
+}
+
 .stopwatch-bar {
   position: fixed;
   right: 0;
@@ -338,6 +408,10 @@ h1 {
   .filters {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .routine-grid {
+    grid-template-columns: 1fr;
   }
 
   .filters input,
