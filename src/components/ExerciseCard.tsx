@@ -1,4 +1,5 @@
 import type { Exercise } from '../types'
+import { useSavedStore } from '../stores/savedStore'
 
 type ExerciseCardProps = {
   exercise: Exercise
@@ -6,6 +7,9 @@ type ExerciseCardProps = {
 }
 
 export function ExerciseCard({ exercise, onStart }: ExerciseCardProps) {
+  const isSaved = useSavedStore((state) => state.savedIds.includes(exercise.id))
+  const toggleSaved = useSavedStore((state) => state.toggleSaved)
+
   return (
     <article className="exercise-card">
       <div>
@@ -15,6 +19,14 @@ export function ExerciseCard({ exercise, onStart }: ExerciseCardProps) {
       </div>
       <footer>
         <span>{exercise.duration}s</span>
+        <button
+          type="button"
+          className="save-button"
+          aria-label={isSaved ? `Unsave ${exercise.name}` : `Save ${exercise.name}`}
+          onClick={() => toggleSaved(exercise.id)}
+        >
+          {isSaved ? 'Saved' : 'Save'}
+        </button>
         <button type="button" onClick={() => onStart(exercise)}>
           Start
         </button>

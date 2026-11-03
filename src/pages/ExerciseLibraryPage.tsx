@@ -3,6 +3,7 @@ import { FixedSizeList } from 'react-window'
 import { ExerciseCard } from '../components/ExerciseCard'
 import { exercises } from '../data/exercises'
 import type { Exercise } from '../types'
+import { useStopwatchStore } from '../stores/stopwatchStore'
 
 type ExerciseRowProps = {
   index: number
@@ -25,6 +26,7 @@ export function ExerciseLibraryPage() {
   const [keyword, setKeyword] = useState('')
   const [category, setCategory] = useState('All')
   const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(null)
+  const start = useStopwatchStore((state) => state.start)
 
   const filteredExercises = useMemo(() => {
     const normalizedKeyword = keyword.trim().toLowerCase()
@@ -79,7 +81,13 @@ export function ExerciseLibraryPage() {
         itemCount={filteredExercises.length}
         itemSize={154}
         width="100%"
-        itemData={{ items: filteredExercises, onStart: setSelectedExercise }}
+        itemData={{
+          items: filteredExercises,
+          onStart: (exercise) => {
+            setSelectedExercise(exercise)
+            start(exercise)
+          },
+        }}
       >
         {ExerciseRow}
       </FixedSizeList>

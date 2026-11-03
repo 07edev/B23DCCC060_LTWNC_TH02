@@ -52,6 +52,29 @@ button {
   font-size: 0.9rem;
 }
 
+.main-nav {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+  margin-right: 28px;
+}
+
+.main-nav button,
+.stopwatch-actions button {
+  padding: 8px 13px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #aab4ca;
+  font-weight: 700;
+}
+
+.main-nav button.active-nav,
+.main-nav button:hover {
+  background: #293650;
+  color: white;
+}
+
 .page-content {
   width: min(1120px, calc(100% - 48px));
   margin: 0 auto;
@@ -179,6 +202,99 @@ h1 {
   font-weight: 700;
 }
 
+.exercise-card .save-button {
+  border: 1px solid #dce2ed;
+  background: white;
+  color: #248b75;
+}
+
+.saved-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.empty-state {
+  margin-top: 24px;
+  padding: 56px 24px;
+  border: 1px dashed #cbd3e1;
+  border-radius: 16px;
+  background: white;
+  text-align: center;
+}
+
+.empty-state p {
+  color: #64708a;
+}
+
+.stopwatch-bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  min-height: 82px;
+  padding: 14px max(24px, calc((100% - 1120px) / 2));
+  background: #172033;
+  color: white;
+  box-shadow: 0 -8px 24px rgb(23 32 51 / 15%);
+}
+
+.empty-stopwatch {
+  justify-content: center;
+  color: #aab4ca;
+}
+
+.stopwatch-info {
+  display: grid;
+  min-width: 250px;
+  gap: 2px;
+}
+
+.stopwatch-info .eyebrow {
+  margin-bottom: 0;
+  font-size: 0.65rem;
+}
+
+.stopwatch-info > span:last-child {
+  color: #aab4ca;
+  font-size: 0.82rem;
+}
+
+.stopwatch-progress {
+  flex: 1;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: #35425e;
+}
+
+.stopwatch-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #54d6b3;
+  transition: width 0.3s ease;
+}
+
+.stopwatch-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.stopwatch-actions button {
+  background: #54d6b3;
+  color: #172033;
+}
+
+.stopwatch-actions .secondary-button {
+  border-color: #53617b;
+  background: transparent;
+  color: #aab4ca;
+}
+
 .dialog-backdrop {
   position: fixed;
   inset: 0;
@@ -215,7 +331,7 @@ h1 {
 @media (max-width: 640px) {
   .page-content {
     width: min(100% - 28px, 1120px);
-    padding-top: 36px;
+    padding: 36px 0 130px;
   }
 
   .page-header,
@@ -233,5 +349,33 @@ h1 {
   .exercise-card {
     gap: 12px;
     padding: 16px;
+  }
+
+  .topbar {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .main-nav {
+    order: 3;
+    width: 100%;
+    margin: 0;
+  }
+
+  .stopwatch-bar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 14px;
+  }
+
+  .stopwatch-info {
+    min-width: 0;
+  }
+
+  .stopwatch-actions {
+    position: absolute;
+    top: 12px;
+    right: 14px;
   }
 }
